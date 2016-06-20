@@ -23,6 +23,7 @@ namespace V_1._2
         public static string salt = "p/Vm5l8WFL4rOGmX5lrhgmYCmdju2BWx+sY8VMWpOk89pI5WcVCh1Bc4kfMk0Qzd";
         public static string channel = "Default channel";
         public static string bcSalt = "p/Vm5l8WFL4rOGmX5Sny4nN2SADvm1QveR+M/3kv6uPuQ0jbZLVCh1Bc4kfMk0Qzd";
+        public static bool minimized = false;
         public MainView()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace V_1._2
                             string[] usrandmsg = txttowrite.Split('>');
                             AppendChat(txttowrite + "\n", Color.Red);
                             MessageBox.Show(this, usrandmsg[1], usrandmsg[0].Replace("[", "").Replace("]", "") + " poked you.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0x40000);
+                            notifyIcon1_Click(this, null);
                         }
                         else
                         {
@@ -215,6 +217,29 @@ namespace V_1._2
         {
             Form channelform = new ChannelForm();
             channelform.Show();
+        }
+
+        private void MainView_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon1.Visible = true;
+                this.Hide();
+                minimized = true;
+            }
+        }
+
+        public void showwindow()
+        {
+            notifyIcon1_Click(this, null);
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            minimized = false;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

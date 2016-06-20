@@ -31,6 +31,7 @@ namespace V_1._2
         private void button1_Click(object sender, EventArgs e)
         {
             cmds.commands("/channel " + _channel);
+            MainView._MainView.showwindow();
             this.Close();
         }
 
