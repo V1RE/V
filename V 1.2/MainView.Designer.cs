@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.sendMsgBox = new System.Windows.Forms.TextBox();
             this.chatHistoryMsgBox = new System.Windows.Forms.RichTextBox();
             this.sendMsgButton = new System.Windows.Forms.Button();
@@ -36,8 +38,9 @@
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usernameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.channelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             this.sendMsgBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.sendMsgBox.Location = new System.Drawing.Point(12, 278);
             this.sendMsgBox.Name = "sendMsgBox";
-            this.sendMsgBox.Size = new System.Drawing.Size(329, 20);
+            this.sendMsgBox.Size = new System.Drawing.Size(330, 20);
             this.sendMsgBox.TabIndex = 2;
             // 
             // chatHistoryMsgBox
@@ -79,9 +82,9 @@
             // sendMsgButton
             // 
             this.sendMsgButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendMsgButton.Location = new System.Drawing.Point(347, 276);
+            this.sendMsgButton.Location = new System.Drawing.Point(346, 276);
             this.sendMsgButton.Name = "sendMsgButton";
-            this.sendMsgButton.Size = new System.Drawing.Size(91, 23);
+            this.sendMsgButton.Size = new System.Drawing.Size(92, 23);
             this.sendMsgButton.TabIndex = 3;
             this.sendMsgButton.Text = "Send";
             this.sendMsgButton.UseVisualStyleBackColor = true;
@@ -126,9 +129,16 @@
             // usernameToolStripMenuItem
             // 
             this.usernameToolStripMenuItem.Name = "usernameToolStripMenuItem";
-            this.usernameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usernameToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.usernameToolStripMenuItem.Text = "Username";
             this.usernameToolStripMenuItem.Click += new System.EventHandler(this.usernameToolStripMenuItem_Click);
+            // 
+            // channelToolStripMenuItem
+            // 
+            this.channelToolStripMenuItem.Name = "channelToolStripMenuItem";
+            this.channelToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.channelToolStripMenuItem.Text = "Channel";
+            this.channelToolStripMenuItem.Click += new System.EventHandler(this.channelToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -137,12 +147,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // channelToolStripMenuItem
+            // notifyIcon1
             // 
-            this.channelToolStripMenuItem.Name = "channelToolStripMenuItem";
-            this.channelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channelToolStripMenuItem.Text = "Channel";
-            this.channelToolStripMenuItem.Click += new System.EventHandler(this.channelToolStripMenuItem_Click);
+            this.notifyIcon1.BalloonTipTitle = "V";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Open V";
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             // 
             // MainView
             // 
@@ -154,11 +164,13 @@
             this.Controls.Add(this.sendMsgBox);
             this.Controls.Add(this.chatHistoryMsgBox);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(450, 350);
             this.Name = "MainView";
             this.Text = "V 1.2";
             this.Load += new System.EventHandler(this.MainView_Load);
+            this.Resize += new System.EventHandler(this.MainView_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -177,5 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem usernameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem channelToolStripMenuItem;
+        public System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
